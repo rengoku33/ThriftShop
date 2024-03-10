@@ -12,7 +12,6 @@ const CategoryItem = ({category}) => {  //receiving entire obj as a prop (the ca
         }}/>
         <div className='category-body-container'>
             <h2>{title}</h2>
-            <p>Shop Now</p>
         </div>
     </div>
   )
