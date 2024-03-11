@@ -1,9 +1,16 @@
 import React from 'react';
-import CategoriesContainer from './components/categories/categories-container/categories-container.component';
+import Home from './routes/home/home.component';
+import NavBar from './routes/navigation/navigation.component';
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return(
-    <CategoriesContainer />
+    <Routes>
+      <Route path='/' element={<NavBar />}>      {/* parent */}         
+        <Route index element={<Home />}/>         {/* child component */}
+        <Route path='shop' element={<NavBar />}/>   {/* child component but diff page*/}
+      </Route>
+    </Routes>
   )
 };
 
