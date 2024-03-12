@@ -1,11 +1,11 @@
 import React from "react";
-import { signInWithGooglePopup } from "../../../utils/firebase/firebase.util";
+import { signInWithGooglePopup, createUserDocumentFromAuth } from "../../../utils/firebase/firebase.util";
 
 const SignIn = () => {
 
     const logGoogleUser = async () => {    // whenever you call to a database, it must be asynchronous 
-        const response = await signInWithGooglePopup();
-        console.log(response);
+        const {user} = await signInWithGooglePopup();
+        const userDocRef = await createUserDocumentFromAuth(user);
     }
     //fetch access token and then we can make CRUD requests
 
