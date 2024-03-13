@@ -5,8 +5,8 @@
    // Temporary Fix: 
    // export NODE_OPTIONS=--openssl-legacy-provider
 
-2) Token based authentication setup and implementation -> firebase.util.js and sigin.component.jsx (../src/utils/firebase/firebase.util.js)
-   email based authentication setup and implementation -> 
+2) Token based authentication setup and implementation -> firebase.util.js and authentication.component.jsx (../src/utils/firebase/firebase.util.js)
+   email based authentication setup and implementation -> firebase.util.js and authentication.component.jsx
 
 3) const var_name = () => {...} // this is an anonymous function assigned to a variable
 
@@ -16,5 +16,10 @@
    authentication is different from firestore, firestore is schema-less db (pretty much a JSON obj, user defined var)
 
 6) import {...} from URL ---> export const, import comp_name from URL ---> export default
+
+7) error handling/ bug fixing technique
+   -> open developer tools F12/ctrl+shift+i
+   -> observe the error code in console EX: Error (auth/cancelled-popup-request).
+   -> handle in catch block EX: catch(error){if(error.code==="auth/cancelled-popup-request"){...alert or handle...}console.log(error);}
 
 0) learn about async method, spread operator in js, interpolation {`${}`} )))

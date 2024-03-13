@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app'; // captures everything required to
 // creates an app instance based on app config
 // this config is an object that allows us to attach firebase app instance to the online instance
 
-import {getAuth, signInWithPopup, createUserWithEmailAndPassword, GoogleAuthProvider} from 'firebase/auth'; // for sign in module either through popup or redirect
+import {getAuth, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider} from 'firebase/auth'; // for sign in module either through popup or redirect
 import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'; // doc allows to retrive & add data to firestore db (get, set)
 
 //------------------------------------------------------sign in with google (token based auth)----------------------------------------------------
@@ -19,10 +19,11 @@ const firebaseConfig = {
     appId: "1:586625985500:web:102e61fb916a3cdcea7d19"
   };
 
-  // Initialize Firebase
-const firebaseapp = initializeApp(firebaseConfig);
+// Initialize Firebase
+//const firebaseapp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
-  // Initialize Authentication provider (we are using google as our authentication provider)
+// Initialize Authentication provider (we are using google as our authentication provider)
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({      // so, everytime a user interacts with the provider we are forcing them to select an account
     prompt: "select_account"
@@ -69,13 +70,24 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   return userDocRef;
 }
 
-//------------------------------------------------------sign in with email and pass----------------------------------------------------
+//------------------------------------------------------sign up with email and pass----------------------------------------------------
 
 export const createAuthUserWithEmailAndPass = async (email, password) => {
 
   if(!email || !password) return; // return even if one of them is missing
 
   return await createUserWithEmailAndPassword(auth, email, password); 
+  // we are passing email and pass to auth variable which holds getAuth function (check linke 28)
+  // getAuth is an inbuilt function imported from firebase, it will check if record is present and if not it will create one
+};
+
+//------------------------------------------------------sign in with email and pass----------------------------------------------------
+
+export const signInAuthUserWithEmailAndPass = async (email, password) => {
+
+  if(!email || !password) return; // return even if one of them is missing
+
+  return await signInWithEmailAndPassword(auth, email, password); 
   // we are passing email and pass to auth variable which holds getAuth function (check linke 28)
   // getAuth is an inbuilt function imported from firebase, it will check if record is present and if not it will create one
 };

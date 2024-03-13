@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './routes/home/home.component';
 import NavBar from './routes/navigation/navigation.component';
-import SignIn from './routes/signin/signin.component';
+import Authentication from './routes/authentication/authentication.component';
 import { Routes, Route } from "react-router-dom";
 
 
@@ -12,7 +12,7 @@ const App = () => {
       <Route path='/' element={<NavBar />}>      {/* parent */}         
         <Route index element={<Home />}/>         {/* child component */}
         <Route path='shop' element={<NavBar />}/>   {/* child component but diff page*/}
-        <Route path='signin' element={<SignIn />}/>   {/* child component but diff page*/}
+        <Route path='auth' element={<Authentication />}/>   {/* child component but diff page*/}
       </Route>
     </Routes>
   )

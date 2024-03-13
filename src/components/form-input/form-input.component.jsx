@@ -1,6 +1,6 @@
 import React from "react";
 import "./form-input.styles.scss";
-// we need 2 forms, 1 for signup and other for sign in = so lets reuse
+// we need 2 forms, 1 for signup and other for sign in
 
 const FormInput = ({label, ...otherProps}) => {  // modifying form tag in signup-form-component.jsx
     return(
