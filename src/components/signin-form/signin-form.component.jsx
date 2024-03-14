@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPass } from "../../utils/firebase/firebase.util";
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPass } from "../../utils/firebase/firebase.util";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import "./signin-form.styles.scss";
@@ -12,12 +12,12 @@ const defaultFormFields = {
 
 const SignInForm = () => {
 
+
     const [formFields, setFormFields] = useState(defaultFormFields);       
     const { email, password } = formFields;                                 
     
     const signInWithGoogle = async () => {    
-        const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        signInWithGooglePopup();
     }
 
     const resetFormFields = () => {
@@ -35,16 +35,14 @@ const SignInForm = () => {
   
               
         try{  
-            const response = await signInAuthUserWithEmailAndPass(email, password);
-            console.log(response);
+            await signInAuthUserWithEmailAndPass(email, password);
+            // whenever a user signs in, automatically send the data to the context, because we got onAuthStateChangedListener
+
             resetFormFields();
 
         }catch(error){
 
             switch(error.code){
-                case "auth/cancelled-popup-request":                                        //doesnt work  
-                    alert('closed pop-up without proper sign-in, refresh page if stuck')    //
-                    break;                                                                  //
 
                 case "auth/invalid-credential":
                     alert('either email or pass is incorrect, try again mate');

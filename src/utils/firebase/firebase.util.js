@@ -1,8 +1,9 @@
-import { initializeApp } from 'firebase/app'; // captures everything required to get firebase runnning including internal servises
+import { initializeApp } from 'firebase/app'; 
+// captures everything required to get firebase runnning including internal servises
 // creates an app instance based on app config
 // this config is an object that allows us to attach firebase app instance to the online instance
 
-import {getAuth, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider} from 'firebase/auth'; // for sign in module either through popup or redirect
+import {getAuth, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, onAuthStateChanged} from 'firebase/auth'; // for sign in module either through popup or redirect
 import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'; // doc allows to retrive & add data to firestore db (get, set)
 
 //------------------------------------------------------sign in with google (token based auth)----------------------------------------------------
@@ -42,7 +43,8 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 
   if(!userAuth) return; // if we do not receuve data then return
 
-  const userDocRef = doc(db, 'users', userAuth.uid);     // create an instance of the object/user to check it with db --- takes 3 arguments: 1-database instance, 2-collenctions, 3-unique identifier
+  const userDocRef = doc(db, 'users', userAuth.uid);     
+  //create an instance of the object/user to check it with db --- takes 3 arguments: 1-database instance, 2-collenctions, 3-unique identifier
   //console.log(userDocRef); ///
   //console.log(userAuth); uncomment to check the format and variables which gets passed once the user signs in 
 
@@ -91,3 +93,14 @@ export const signInAuthUserWithEmailAndPass = async (email, password) => {
   // we are passing email and pass to auth variable which holds getAuth function (check linke 28)
   // getAuth is an inbuilt function imported from firebase, it will check if record is present and if not it will create one
 };
+
+//----------------------------------------------------------------sign out----------------------------------------------------------
+
+export const signOutUser = async () => await signOut(auth);
+
+//------------------------------------------------------onAuthStateChanged----------------------------------------------------
+  // a listener which will be invoked when a user signs in/out
+export const onAuthStateChangedListener = (callback) => {
+  
+  onAuthStateChanged(auth, callback);
+}
