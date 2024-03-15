@@ -42,4 +42,12 @@ export NODE_OPTIONS=--openssl-legacy-provider
    refer firebase.util.js and user.context.jsx
    centralizing all code related to authentication into one listener
 
+13) when you import from a json file, react will automatically take the entire data and store in the import_name(variable)
+
+14) shop component -> shop.component.jsx
+    store products data in firestore and retrive a json format and iterate through them applying styles/ de-structuring/ other stuff
+    fetch products data from firestore and store it in context for efficiency 
+
+15) How CSS grid works -> https://css-tricks.com/snippets/css/complete-guide-grid/
+
 0) learn about async method, spread operator in js, interpolation {`${}`} )))

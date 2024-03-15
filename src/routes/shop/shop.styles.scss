@@ -1,0 +1,6 @@
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  // repear 5 times --- 1 evenly distributed at equidistant size
+    column-gap: 10px;
+    row-gap: 50px;
+}

@@ -38,5 +38,7 @@ export const UserProvider = ({children}) => {
     
 }
 
-// import it in index.js and enclose the app with the providor component
+// import (provider) in index.js and enclose the app with the providor component
 // so, we set it up to a parent level component which gives us access to any componenet inside
+
+// import (context) in the required component (ex: used cart-context in navigation component)

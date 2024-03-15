@@ -5,9 +5,13 @@ import { Fragment, useContext } from "react";                         // renders
 import { ReactComponent as ThriftLogo} from '../../assets/crown.svg'  // SVG is a scalable vector (no matter how big or small, it will be crisp)
 import { UserContext } from "../../contexts/user.context";            // change signin to signout once the user is signed-in by using useContext hook
 import { signOutUser } from "../../utils/firebase/firebase.util";     // whenever a signed-in user clicks sign-out button, signOutHandler function gets invoked
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../contexts/cart.context";
 
 const NavBar = () => {
     const { currentUser } = useContext(UserContext);
+    const { isCartOpen } = useContext(CartContext);
    
     return (
       <Fragment> 
@@ -23,9 +27,10 @@ const NavBar = () => {
                   (<Link className="links" to='/auth'>SIGN IN</Link>)
                 }
 
-                <Link className="links" to='/'>VIEW CART</Link>
+                <CartIcon />
             </div>
-        </div>      
+            {isCartOpen && <CartDropdown />}    {/*short circuit operator (modified AND) ->  if isCartOpen is true then execute the component*/}
+        </div>        
         <Outlet/>
       </Fragment>
     )
