@@ -4,6 +4,7 @@
    // In other words, Node.js throws an ERR_OSSL_EVP_UNSUPPORTED error to prevent you from using a feature that OpenSSL removed for security reasons.
    // Temporary Fix: 
 export NODE_OPTIONS=--openssl-legacy-provider
+start server: npm start       stop server: crtl+c
 
 2) Token based authentication setup and implementation -> firebase.util.js and authentication.component.jsx (../src/utils/firebase/firebase.util.js)
    email based authentication setup and implementation -> firebase.util.js and authentication.component.jsx
@@ -48,6 +49,18 @@ export NODE_OPTIONS=--openssl-legacy-provider
     store products data in firestore and retrive a json format and iterate through them applying styles/ de-structuring/ other stuff
     fetch products data from firestore and store it in context for efficiency 
 
-15) How CSS grid works -> https://css-tricks.com/snippets/css/complete-guide-grid/  (authentication, cart concept)
+15) How CSS grid works -> https://css-tricks.com/snippets/css/complete-guide-grid/  
 
-0) learn about async method, spread operator in js, interpolation {`${}`} )))
+16) useEffect : we pass a callback which runs when dependency array changes SYNTAX: useEffect(() => {...},[dependency_array]);
+
+17) reduce function: we pass a callback and a starting value. used to iterate through and perform a mathematical operation SYNTAX: array_name.reduce((...) => {...}, 0)
+
+18) how to make a new route: create a component and import + mention it under Route of App.js (React-Router-Dom)
+    how to establish context: 1---create CreatedContext.context.jsx file 2---import CreateContext, useState from React 
+                              3---declare actual value of context and context provider (refer user.context.jsx)
+                              4---import (provider) in index.js and enclose the app with the provider component
+    how to fetch data from context: 1---import useContext and CreatedContext 2---de-structure CreatedContext
+
+0) learn about async method await, spread operator in js, interpolation {`${}`} )))
+         (authentication, cart concept)
+         necessary concepts: hooks(useState, useContext, useEffect), array.functions(map, filter, reduce, find, includes)
