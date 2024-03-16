@@ -61,6 +61,19 @@ start server: npm start       stop server: crtl+c
                               4---import (provider) in index.js and enclose the app with the provider component
     how to fetch data from context: 1---import useContext and CreatedContext 2---de-structure CreatedContext
 
+19) firestore db model [collection -> document     -> data]
+                       [users      -> userAuth.uid -> displayName, email, createdAt]
+    Incredibly flexible db - we dont have to adhere to a structure of a table, can create objects of all sorts
+
+20) Transaction - represents successful unit of work to a DB
+
+21) how to fetch data from firestore: 1--- async getCategoriesAndDocuments function --- make collection reference with collection key --- import query, getDocs from firestore
+                                      2--- In  getCategoriesAndDocuments, make a collection reference which connects to db and particular collection --- generate a query off of the collection ref
+                                           fetch and store the data in querySnapshot --- use reduce to accumulate and de-structure --- return the de-structured object
+                                      3--- In your context - import the getCategoriesAndDocuments method --- utilize useEffect to pass this async function --- and some context stuff
+                                      4--- import context in your component and pretty much iterete through the object
+                                       
+
 0) learn about async method await, spread operator in js, interpolation {`${}`} )))
          (authentication, cart concept)
          necessary concepts: hooks(useState, useContext, useEffect), array.functions(map, filter, reduce, find, includes)
