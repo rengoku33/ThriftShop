@@ -1,6 +1,6 @@
 import React from "react";
-import './navigation.styles.scss';  
-import { Outlet, Link } from "react-router-dom";                      // outlet to persist a component // link is like an anchor tag
+import { NavigationContainer, LogoContainer, NavLinks, NavLink } from './navigation.styles.jsx';  
+import { Outlet } from "react-router-dom";                      // outlet to persist a component // link is like an anchor tag
 import { Fragment, useContext } from "react";                         // renders nothing, just to use it as a parent to enclose the code in return statement
 import { ReactComponent as ThriftLogo} from '../../assets/crown.svg'  // SVG is a scalable vector (no matter how big or small, it will be crisp)
 import { UserContext } from "../../contexts/user.context";            // change signin to signout once the user is signed-in by using useContext hook
@@ -15,22 +15,20 @@ const NavBar = () => {
    
     return (
       <Fragment> 
-        <div className="navigation">
-            <Link className="logo-container" to='/'> <ThriftLogo className="logo"/> </Link>
-            
-            <div className="links-container">
-                <Link className="links" to='/shop'>SHOP</Link>
-                <Link className="links" to='/'>CONTACT</Link>
+        <NavigationContainer>
+            <LogoContainer to='/'><ThriftLogo className="logo"/></LogoContainer>
+            <NavLinks>
+                <NavLink to='/shop'>SHOP</NavLink>
+                <NavLink to='/'>CONTACT</NavLink>
                 { currentUser ? 
-                  (<span className="links" onClick={signOutUser}>SIGN OUT</span>)
+                  (<NavLink onClick={signOutUser}>SIGN OUT</NavLink>)
                   :
-                  (<Link className="links" to='/auth'>SIGN IN</Link>)
+                  (<NavLink to='/auth'>SIGN IN</NavLink>)
                 }
-
                 <CartIcon />
-            </div>
+            </NavLinks>
             {isCartOpen && <CartDropdown />}    {/*short circuit operator (modified AND) ->  if isCartOpen is true then execute the component*/}
-        </div>        
+        </NavigationContainer>        
         <Outlet/>
       </Fragment>
     )

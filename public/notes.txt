@@ -72,7 +72,14 @@ start server: npm start       stop server: crtl+c
                                            fetch and store the data in querySnapshot --- use reduce to accumulate and de-structure --- return the de-structured object
                                       3--- In your context - import the getCategoriesAndDocuments method --- utilize useEffect to pass this async function --- and some context stuff
                                       4--- import context in your component and pretty much iterete through the object
-                                       
+
+22) styled components - (css in js)library, prevents clashing of style classes by automatically generating unique class name on build
+                        React components to replace CSS
+       convert scss -> styled components: 1--- rename the extension from scss to jsx --- import styled from 'styled-components';
+                                          2--- declare your stylesheet inside a variable to export EX: export const NavigationContainer = styled.div``
+                                          3--- import your stylesheet.jsx and custom styled components in your componenet and enclose your code with your component tags
+                                          Refer: navigation.component.jsx and navigation.styles.jsx
+                             
 
 0) learn about async method await, spread operator in js, interpolation {`${}`} )))
          (authentication, cart concept)
