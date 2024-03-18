@@ -31,6 +31,11 @@ const SignUpForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();             // prevent default behaviour of the form
 
+        if(password.length<7){   // check if pass and confirm matches
+            alert("passwords must be 7 characters or more");
+            return;
+        }   
+
         if(password !== confirmPassword){   // check if pass and confirm matches
             alert("passwords does not match");
             return;
@@ -43,6 +48,10 @@ const SignUpForm = () => {
               // lets now pass in the user object to createUserDocumentFromAuth method variable at firebase.util.js
             await createUserDocumentFromAuth(user, {displayName});
             resetFormFields();
+
+            alert("welcome "+displayName+", Sign-up successful")
+            window.location = "/";
+
 
         }catch(error){
             if(error.code === 'auth/email-already-in-use'){

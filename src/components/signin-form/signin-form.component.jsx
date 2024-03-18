@@ -17,7 +17,14 @@ const SignInForm = () => {
     const { email, password } = formFields;                                 
     
     const signInWithGoogle = async () => {    
-        signInWithGooglePopup();
+        try{
+            await signInWithGooglePopup();
+            window.location = "/";
+        }catch(error){
+            if(error.code==="auth/cancelled-popup-request"){
+                alert("Error caused due to closing the google popup without successfully logging in, Try again or use Email/Pass");
+            }
+        }
     }
 
     const resetFormFields = () => {
@@ -39,6 +46,8 @@ const SignInForm = () => {
             // whenever a user signs in, automatically send the data to the context, because we got onAuthStateChangedListener
 
             resetFormFields();
+            alert("User authentication success, Redirecting to home page");
+            window.location = "/";
 
         }catch(error){
 

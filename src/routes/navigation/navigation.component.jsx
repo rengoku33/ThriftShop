@@ -19,7 +19,7 @@ const NavBar = () => {
             <LogoContainer to='/'><ThriftLogo className="logo"/></LogoContainer>
             <NavLinks>
                 <NavLink to='/shop'>SHOP</NavLink>
-                <NavLink to='/'>CONTACT</NavLink>
+                {/*<NavLink to='/'>CONTACT</NavLink>*/}
                 { currentUser ? 
                   (<NavLink onClick={signOutUser}>SIGN OUT</NavLink>)
                   :
